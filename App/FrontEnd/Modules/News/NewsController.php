@@ -17,8 +17,6 @@ class NewsController extends BackController
     // On récupère le manager des news.
     $manager = $this->managers->getManagerOf('News');
     
-    // Cette ligne, vous ne pouviez pas la deviner sachant qu'on n'a pas encore touché au modèle.
-    // Contentez-vous donc d'écrire cette instruction, nous implémenterons la méthode ensuite.
     $listeNews = $manager->getList(0, $nombreNews);
     
     foreach ($listeNews as $news)
@@ -34,5 +32,18 @@ class NewsController extends BackController
     
     // On ajoute la variable $listeNews à la vue.
     $this->page->addVar('listeNews', $listeNews);
+  }
+  
+  public function executeShow(HTTPRequest $request)
+  {
+    $news = $this->managers->getManagerOf('News')->getUnique($request->getData('id'));
+    
+    if (empty($news))
+    {
+      $this->app->httpResponse()->redirect404();
+    }
+    
+    $this->page->addVar('title', $news->titre());
+    $this->page->addVar('news', $news);
   }
 }
