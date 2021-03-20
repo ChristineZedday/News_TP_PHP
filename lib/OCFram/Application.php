@@ -5,9 +5,10 @@ abstract class Application
 {
   protected $httpRequest;
   protected $httpResponse;
-  protected $name;
   protected $user;
+  protected $name;
   protected $config;
+ 
 
   public function __construct()
   {
@@ -16,7 +17,8 @@ abstract class Application
 
     $this->name = '';
     $this->user = new User();
-    $this->config = new Config();
+    $this->config = new Config($this);
+   
   }
 
   public function getController()
@@ -47,11 +49,13 @@ abstract class Application
     {
       // On récupère la route correspondante à l'URL.
       $matchedRoute = $router->getRoute($this->httpRequest->requestURI());
+  
     }
     catch (\RuntimeException $e)
     {
       if ($e->getCode() == Router::NO_ROUTE)
       {
+        var_dump('404');
         // Si aucune route ne correspond, c'est que la page demandée n'existe pas.
         $this->httpResponse->redirect404();
       }
@@ -81,4 +85,16 @@ abstract class Application
   {
     return $this->name;
   }
+
+  public function config()
+  {
+    return $this->config;
+  }
+
+  public function user()
+  {
+    return $this->user;
+  }
+
+
 }

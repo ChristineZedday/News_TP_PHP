@@ -1,7 +1,7 @@
 <?php
 namespace OCFram;
 
-abstract class Managers
+class Managers
 {
 	protected $api=null;
 	protected $dao = null;
@@ -21,7 +21,8 @@ abstract class Managers
 	
 		if (!isset($this->managers[$module]))
 		{
-		  $manager = '\\Model\\'.$module.'Manager'.$this->api;
+		  var_dump('on a pas');
+			$manager = '\\Model\\'.$module.'Manager'.$this->api;
 	
 		  $this->managers[$module] = new $manager($this->dao);
 		}
