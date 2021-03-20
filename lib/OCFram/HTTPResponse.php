@@ -38,7 +38,7 @@ class HTTPResponse extends ApplicationComponent
 
 	public function setPage(page $Page)
 	{
-		var_dump($page);
+		var_dump('la page? '.$page);
 		$this->page = $page;
 	}
 }

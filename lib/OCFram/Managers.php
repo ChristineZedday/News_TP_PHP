@@ -21,10 +21,12 @@ class Managers
 	
 		if (!isset($this->managers[$module]))
 		{
-		  var_dump('on a pas');
+		  
 			$manager = '\\Model\\'.$module.'Manager'.$this->api;
+			
 	
 		  $this->managers[$module] = new $manager($this->dao);
+		  var_dump($this->managers[$module]);
 		}
 	
 		return $this->managers[$module];

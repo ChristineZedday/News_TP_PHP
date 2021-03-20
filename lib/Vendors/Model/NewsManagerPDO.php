@@ -7,6 +7,7 @@ class NewsManagerPDO extends NewsManager
 {
   public function getList($debut = -1, $limite = -1)
   {
+   var_dump ('dans getlist du newsmanagerPDO');
     $sql = 'SELECT id, auteur, titre, contenu, dateAjout, dateModif FROM news ORDER BY id DESC';
     
     if ($debut != -1 || $limite != -1)
@@ -16,7 +17,7 @@ class NewsManagerPDO extends NewsManager
     
     $requete = $this->dao->query($sql);
     $requete->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, '\Entity\News');
-    
+  
     $listeNews = $requete->fetchAll();
     
     foreach ($listeNews as $news)
@@ -26,8 +27,9 @@ class NewsManagerPDO extends NewsManager
     }
     
     $requete->closeCursor();
-    
+   
     return $listeNews;
+   
   }
   
   public function getUnique($id)

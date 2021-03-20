@@ -13,9 +13,9 @@ class NewsController extends BackController
     $nombreCaracteres = $this->app->config()->get('nombre_caracteres');
     
     // On ajoute une définition pour le titre.
-    var_dump('la page: '.$this->page->getVars());
+   
     $this->page->addVar('title', 'Liste des '.$nombreNews.' dernières news');
-    var_dump($page);
+    var_dump($this->page->getVars([1]));
     
     // On récupère le manager des news.
     
@@ -33,9 +33,14 @@ class NewsController extends BackController
         $news->setContenu($debut);
       }
     }
-    
+    echo '<pre>';
+    var_dump($listeNews) ;
+    echo '</pre>';
     // On ajoute la variable $listeNews à la vue.
     $this->page->addVar('listeNews', $listeNews);
+    echo '<pre>';
+    var_dump('ma page vue par NewsController '.$this->page->getVars([1]));
+    echo '</pre>';
   }
   
   public function executeShow(HTTPRequest $request)

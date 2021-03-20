@@ -20,7 +20,7 @@ class FrontendApplication extends Application
     var_dump ('revenu dans frontendapp avec le controleur, que je vais executer');
     var_dump('a-t-il une page?'.$controller->page()->getVars());
     $controller->execute();
-
+var_dump('je reviens avec la liste des news fournie par Newscontroller, je vas ds httpresponse avec la page: '.$controller->page()->getVars([1]));
     $this->httpResponse->setPage($controller->page());
     $this->httpResponse->send();
   }
