@@ -8,11 +8,14 @@ class NewsController extends BackController
 {
   public function executeIndex(HTTPRequest $request)
   {
+   var_dump('dans executeIndex de Newscontroller');
     $nombreNews = $this->app->config()->get('nombre_news');
     $nombreCaracteres = $this->app->config()->get('nombre_caracteres');
     
     // On ajoute une définition pour le titre.
+    var_dump('la page: '.$this->page->getVars());
     $this->page->addVar('title', 'Liste des '.$nombreNews.' dernières news');
+    var_dump($page);
     
     // On récupère le manager des news.
     

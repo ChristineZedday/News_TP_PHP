@@ -44,4 +44,7 @@ class Page extends ApplicationComponent
 
     $this->contentFile = $contentFile;
   }
+
+  public function getVars()
+  {return $this->vars;}
 }

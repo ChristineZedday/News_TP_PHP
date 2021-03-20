@@ -38,6 +38,7 @@ class HTTPResponse extends ApplicationComponent
 
 	public function setPage(page $Page)
 	{
+		var_dump($page);
 		$this->page = $page;
 	}
 }

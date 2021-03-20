@@ -15,7 +15,10 @@ class FrontendApplication extends Application
 
   public function run()
   {
+    var_dump('le bootstrap ma anvoyé ici dans run de frontendapp');
     $controller = $this->getController();
+    var_dump ('revenu dans frontendapp avec le controleur, que je vais executer');
+    var_dump('a-t-il une page?'.$controller->page()->getVars());
     $controller->execute();
 
     $this->httpResponse->setPage($controller->page());

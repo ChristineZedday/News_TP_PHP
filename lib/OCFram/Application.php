@@ -23,6 +23,8 @@ abstract class Application
 
   public function getController()
   {
+    var_dump('app ma envoyé dans getController de classe parente Application');
+    
     $router = new Router;
 
     $xml = new \DOMDocument;

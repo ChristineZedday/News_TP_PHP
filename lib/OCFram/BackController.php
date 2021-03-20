@@ -23,13 +23,14 @@ abstract class BackController extends ApplicationComponent
 
   public function execute()
   {
+    var_dump('dans execute de backController');
     $method = 'execute'.ucfirst($this->action);
 
     if (!is_callable([$this, $method]))
     {
       throw new \RuntimeException('L\'action "'.$this->action.'" n\'est pas définie sur ce module');
     }
-
+    var_dump('$method '.$method);
     $this->$method($this->app->httpRequest());
   }
 
