@@ -1,4 +1,5 @@
 <?php
+echo('suis dans le fichier index.php</br>');
 foreach ($listeNews as $news)
 {
 ?>

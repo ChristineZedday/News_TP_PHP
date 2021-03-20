@@ -5,6 +5,7 @@ class Page extends ApplicationComponent
 {
   protected $contentFile;
   protected $vars = [];
+ 
 
   public function addVar($var, $value)
   {
@@ -18,20 +19,27 @@ class Page extends ApplicationComponent
 
   public function getGeneratedPage()
   {
+    echo('Page: getGeneratedPage </br>');
     if (!file_exists($this->contentFile))
     {
+      
       throw new \RuntimeException('La vue spécifiée n\'existe pas');
+
     }
     // $user = $this->app->user();
+    var_dump($this->contentFile);
 
     extract($this->vars);
 
     ob_start();
       require $this->contentFile;
     $content = ob_get_clean();
+    var_dump($content);
 
     ob_start();
+    var_dump( __DIR__.'/../../App/'.$this->app->name().'/Templates/layout.php');
       require __DIR__.'/../../App/'.$this->app->name().'/Templates/layout.php';
+      var_dump(ob_get_clean());
     return ob_get_clean();
   }
 

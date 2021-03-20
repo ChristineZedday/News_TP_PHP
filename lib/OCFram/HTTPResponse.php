@@ -28,6 +28,7 @@ class HTTPResponse extends ApplicationComponent
 
 	public function send()
 	{
+		var_dump('fonction send de HTTPresponse');
 		exit($this->page->getGeneratedPage());
 	}
 
