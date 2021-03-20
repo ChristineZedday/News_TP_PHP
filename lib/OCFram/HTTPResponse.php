@@ -36,9 +36,10 @@ class HTTPResponse extends ApplicationComponent
 		setcookie($name, $value, $expire, $path, $domain, $secure, $httpOnly);
 	}
 
-	public function setPage(page $Page)
+	public function setPage(page $page)
 	{
-		var_dump('la page? '.$page);
+		$vars= $page->getVars();
+		var_dump('la page? '.$vars[0]);
 		$this->page = $page;
 	}
 }

@@ -15,7 +15,10 @@ class NewsController extends BackController
     // On ajoute une définition pour le titre.
    
     $this->page->addVar('title', 'Liste des '.$nombreNews.' dernières news');
-    var_dump($this->page->getVars([1]));
+    $vars = $this->page->getVars();
+    echo '<pre>';
+    var_dump($vars[0]);
+    echo '/<pre>';
     
     // On récupère le manager des news.
     
