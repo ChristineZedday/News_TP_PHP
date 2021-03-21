@@ -26,7 +26,7 @@ class Page extends ApplicationComponent
       throw new \RuntimeException('La vue spécifiée n\'existe pas');
 
     }
-    // $user = $this->app->user();
+    $user = $this->app->user();
     var_dump($this->contentFile);
 
     extract($this->vars);
@@ -37,8 +37,8 @@ class Page extends ApplicationComponent
     var_dump($content);
 
     ob_start();
-    var_dump( __DIR__.'/../../App/'.$this->app->name().'/Templates/layout.php');
-      require __DIR__.'/../../App/'.$this->app->name().'/Templates/layout.php';
+    
+      require __DIR__.'/../../Web/Templates/layout.php';
       var_dump(ob_get_clean());
     return ob_get_clean();
   }
